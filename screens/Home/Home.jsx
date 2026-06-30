@@ -1,12 +1,14 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import {AppWrapper, Header} from "../../components"
+import {Categories} from "./categories"
+import { Products } from './Products'
 const Home = () => {
   return (
     <>
        <Header/>
        <AppWrapper>
-      <Text>Home</Text>
+        <Categories/>
+        <Products/>
       </AppWrapper>
     </>
   )
