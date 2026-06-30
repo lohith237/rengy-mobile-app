@@ -1,13 +1,13 @@
 export const fonts = {
   fontFamily: {
-    "300": "PoppinsLight",
-    "400": "PoppinsRegular",
-    "500": "PoppinsMedium",
-    "600": "PoppinsSemiBold",
-    "700": "PoppinsBold",
-    "800": "PoppinsExtraBold",
-    "900": "PoppinsBlack",
-    "1000":"SpiraxRegular",
-    "bold":"DMSansBold"
-  }
+    "300": "Poppins-Light",
+    "400": "Poppins-Regular",
+    "500": "Poppins-Medium",
+    "600": "Poppins-SemiBold",
+    "700": "Poppins-Bold",
+    "800": "Poppins-ExtraBold",
+    "900": "Poppins-Black",
+    "1000": "Spirax-Regular",
+    "bold": "DMSans-Bold",
+  },
 };
