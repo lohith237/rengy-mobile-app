@@ -5,6 +5,7 @@ const initialState = {
     products: [],
     loading: false,
     searchQuery: "",
+    selectedProduct: null,
     sortBy: "title",
     error: null,
 };
@@ -38,7 +39,9 @@ const productSlice = createSlice({
         setError: (state, action) => {
             state.error = action.payload;
         },
-
+        setSelectedProduct: (state, action) => {
+            state.selectedProduct = action.payload;
+        },
         clearError: (state) => {
             state.error = null;
         },
@@ -53,7 +56,8 @@ export const {
     setError,
     clearError,
     setSearchQuery,
-    setSortBy
+    setSortBy,
+    setSelectedProduct
 } = productSlice.actions;
 
 export default productSlice.reducer;

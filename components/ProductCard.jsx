@@ -10,8 +10,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { wp, deviceWidth } from '../helpers/common';
 import { fonts, colors } from '../Theme';
 import { FavoriteButton } from './FavoriteButton';
-
-const ProductCard = ({ item, onPress, onAddToFavorite,cardWidth ="100%" }) => {
+import { setSelectedProduct } from '../redux/productSlice';
+const ProductCard = ({ item, onPress,cardWidth ="100%" }) => {
   const discountPercent = item.discountPercentage
     ? Math.round(item.discountPercentage)
     : 0;
