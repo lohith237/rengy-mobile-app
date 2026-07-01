@@ -1,3 +1,5 @@
 export {Initializing} from "./Initializing"
 export {Home} from "./Home"
 export {ProductDetails} from "./ProductDetails"
+export {Cart} from "./Cart"
+export {Favourites} from "./Favourites"

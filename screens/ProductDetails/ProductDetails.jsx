@@ -11,15 +11,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import axiosInstance from '../../service/axiosConfig';
 import { setLoading } from '../../redux/productSlice';
 import { colors, fonts } from '../../Theme';
-import { wp } from '../../helpers/common';
-import { LoadingIndicator, FavoriteButton, ImageCarousel, CollapsibleDescription } from '../../components';
+import { hp, wp } from '../../helpers/common';
+import { LoadingIndicator, FavoriteButton, ImageCarousel, CollapsibleDescription, CartButton } from '../../components';
 
 const ProductDetails = ({ route, navigation }) => {
   const { product } = route.params;
   const dispatch = useDispatch();
   const { loading } = useSelector(state => state.product);
   const [selectedProduct, setSelectedProduct] = useState(product);
-
   useEffect(() => {
     if (product?.id) {
       fetchFullProductDetail();
@@ -68,7 +67,7 @@ const ProductDetails = ({ route, navigation }) => {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ paddingBottom: hp(10) }} style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.carouselWrapper}>
           <ImageCarousel images={selectedProduct.images} />
           <View style={styles.favoriteBtnWrapper}>
@@ -152,6 +151,9 @@ const ProductDetails = ({ route, navigation }) => {
           />
         )}
       </ScrollView>
+      <View style={styles.bottomBar}>
+        <CartButton item={selectedProduct} />
+      </View>
     </>
   );
 };
@@ -279,6 +281,17 @@ const styles = StyleSheet.create({
     fontSize: wp(3.5),
     fontFamily: fonts.fontFamily['400'],
     color: colors.textLight,
+  },
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    width:"100%",
+    backgroundColor: colors.white,
+    paddingHorizontal: wp(4),
+    paddingVertical: wp(3),
+    borderTopWidth: 1,
+    borderTopColor: colors.background,
+    
   },
 });
 

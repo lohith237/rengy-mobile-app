@@ -7,11 +7,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { wp, deviceWidth } from '../helpers/common';
+import { wp, deviceWidth, hp } from '../helpers/common';
 import { fonts, colors } from '../Theme';
 import { FavoriteButton } from './FavoriteButton';
-import { setSelectedProduct } from '../redux/productSlice';
-const ProductCard = ({ item, onPress,cardWidth ="100%" }) => {
+import { CartButton } from './CartButton';
+const ProductCard = ({ item, onPress, cardWidth = "100%" }) => {
   const discountPercent = item.discountPercentage
     ? Math.round(item.discountPercentage)
     : 0;
@@ -22,7 +22,7 @@ const ProductCard = ({ item, onPress,cardWidth ="100%" }) => {
 
   return (
     <TouchableOpacity
-      style={[styles.card,{width:cardWidth}]}
+      style={[styles.card, { width: cardWidth }]}
       onPress={onPress}
       activeOpacity={0.8}
     >
@@ -32,13 +32,13 @@ const ProductCard = ({ item, onPress,cardWidth ="100%" }) => {
           style={styles.image}
           resizeMode="stretch"
         />
-        
+
         {discountPercent > 0 && (
           <View style={styles.discountBadge}>
             <Text style={styles.discountText}>-{discountPercent}%</Text>
           </View>
         )}
-        <FavoriteButton item={item}/>
+        <FavoriteButton item={item} />
       </View>
 
       <View style={styles.content}>
@@ -55,9 +55,9 @@ const ProductCard = ({ item, onPress,cardWidth ="100%" }) => {
         </View>
 
         <View style={styles.priceContainer}>
-          <Text style={styles.discountedPrice}>${discountedPrice}</Text>
+          <Text style={styles.discountedPrice}>₹{discountedPrice}</Text>
           {item.discountPercentage > 0 && (
-            <Text style={styles.originalPrice}>${item.price}</Text>
+            <Text style={styles.originalPrice}>₹{item.price}</Text>
           )}
         </View>
 
@@ -69,6 +69,9 @@ const ProductCard = ({ item, onPress,cardWidth ="100%" }) => {
         >
           {item.stock > 0 ? 'In Stock' : 'Out of Stock'}
         </Text>
+        <View style={styles.cartContainer}>
+          <CartButton item={item} />
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -85,6 +88,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
+    position:"relative"
   },
   imageContainer: {
     width: '100%',
@@ -129,6 +133,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.fontFamily['600'],
     color: colors.textDark,
     marginBottom: wp(1.5),
+    minHeight:hp(5)
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -166,6 +171,9 @@ const styles = StyleSheet.create({
     fontSize: wp(2.4),
     fontFamily: fonts.fontFamily['600'],
   },
+  cartContainer: {
+  marginTop: wp(3),
+},
 });
 
-export {ProductCard};
+export { ProductCard };
